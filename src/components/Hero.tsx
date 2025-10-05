@@ -1,4 +1,3 @@
-// src/components/Hero.tsx
 import { Link, useLocation } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Users, Award, Clock } from "lucide-react";
@@ -17,43 +16,40 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative bg-white overflow-hidden">
-      {/* background tint */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-teal-50 to-white opacity-80" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 lg:pt-12 lg:pb-20 grid lg:grid-cols-2 gap-12 items-center">
-        {/* Left content */}
-        <div className="text-center lg:text-left">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-teal-50/40 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 lg:pt-20 lg:pb-28 grid lg:grid-cols-2 gap-12 items-center">
+        {/* ---------- LEFT CONTENT ---------- */}
+        <div className="text-center lg:text-left space-y-8">
           {/* Badges */}
-          <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
-            <Badge className="bg-teal-100 text-teal-700 border-teal-200 px-5 py-2 text-base font-semibold rounded-full shadow-sm">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+            <Badge className="bg-gradient-to-r from-teal-100 to-emerald-100 text-teal-700 border border-teal-200 px-5 py-2 rounded-full text-sm sm:text-base font-semibold shadow-sm">
               🎓 Admissions Open
             </Badge>
-            <Badge className="bg-teal-100 text-teal-700 border-teal-200 px-5 py-2 text-base font-semibold rounded-full shadow-sm">
+            <Badge className="bg-gradient-to-r from-teal-100 to-emerald-100 text-teal-700 border border-teal-200 px-5 py-2 rounded-full text-sm sm:text-base font-semibold shadow-sm">
               ✨ Free Demo Classes
             </Badge>
           </div>
 
           {/* Heading */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-black leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
             Best Coaching in{" "}
-            <span className="bg-gradient-to-r from-teal-400 to-teal-700 bg-clip-text text-transparent">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-emerald-700">
               Palam
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl sm:text-2xl text-gray-700 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+          <p className="text-gray-700 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
             Premier coaching institute in Palam, New Delhi. Specialized in{" "}
-            <span className="font-semibold text-black">Commerce</span>, Maths & Science
-            with dedicated faculty and proven results.
+            <span className="font-semibold text-gray-900">Commerce</span>, Maths & Science
+            with experienced faculty and proven results.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start mb-16">
+          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 sm:gap-6 pt-2">
             <Link
               to="/courses"
-              className="bg-gradient-to-r from-teal-400 to-teal-700 text-white shadow-lg hover:opacity-90 font-bold px-10 py-4 text-lg rounded-xl inline-flex items-center justify-center"
+              className="bg-gradient-to-r from-teal-500 to-emerald-600 hover:opacity-95 text-white font-semibold px-8 py-3 rounded-xl text-lg shadow-md flex items-center justify-center transition-transform hover:scale-[1.02]"
             >
               <BookOpen className="w-6 h-6 mr-2" />
               Explore Courses
@@ -61,55 +57,44 @@ const Hero = () => {
             <Link
               to="/contact#contact"
               onClick={onDemoClick}
-              className="border-2 border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white font-bold px-10 py-4 text-lg rounded-xl inline-flex items-center justify-center"
+              className="border-2 border-teal-600 text-teal-700 hover:bg-teal-600 hover:text-white font-semibold px-8 py-3 rounded-xl text-lg shadow-sm flex items-center justify-center transition-colors"
             >
               Book a Free Demo
             </Link>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-teal-100 flex items-center justify-center shadow-sm">
-                <Users className="w-8 h-8 text-teal-600" />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10">
+            {[
+              { icon: Users, label: "Students", value: "500+" },
+              { icon: Award, label: "Success Rate", value: "95%" },
+              { icon: BookOpen, label: "Expert Faculty", value: "10+" },
+              { icon: Clock, label: "Years Experience", value: "5" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center space-y-2">
+                <div className="w-14 h-14 mx-auto flex items-center justify-center bg-teal-100 rounded-full shadow-sm">
+                  <stat.icon className="w-7 h-7 text-teal-600" />
+                </div>
+                <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
               </div>
-              <div className="text-2xl font-extrabold text-black">500+</div>
-              <div className="text-sm text-gray-600">Students</div>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-teal-100 flex items-center justify-center shadow-sm">
-                <Award className="w-8 h-8 text-teal-600" />
-              </div>
-              <div className="text-2xl font-extrabold text-black">95%</div>
-              <div className="text-sm text-gray-600">Success Rate</div>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-teal-100 flex items-center justify-center shadow-sm">
-                <BookOpen className="w-8 h-8 text-teal-600" />
-              </div>
-              <div className="text-2xl font-extrabold text-black">10+</div>
-              <div className="text-sm text-gray-600">Expert Faculty</div>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-teal-100 flex items-center justify-center shadow-sm">
-                <Clock className="w-8 h-8 text-teal-600" />
-              </div>
-              <div className="text-2xl font-extrabold text-black">5</div>
-              <div className="text-sm text-gray-600">Years Experience</div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Right media – EB2 slightly higher */}
-        <div className="relative w-full max-w-xl mx-auto lg:-mt-12">
-          <div className="rounded-[22px] overflow-hidden shadow-2xl ring-1 ring-teal-100 bg-white">
+        {/* ---------- RIGHT IMAGE ---------- */}
+        <div className="relative w-full max-w-xl mx-auto mt-0 lg:-mt-8">
+          {/* Main Image */}
+          <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-100 transition-transform duration-300 hover:scale-[1.02]">
             <img
               src="/EB2.jpg"
               alt="Education Beast Classroom"
-              className="w-full h-[420px] md:h-[520px] object-cover object-[50%_40%]"
+              className="w-full h-[400px] sm:h-[480px] md:h-[540px] object-cover object-center"
             />
           </div>
-          <div className="absolute -z-10 inset-0 blur-3xl opacity-30 bg-gradient-to-r from-teal-300 to-teal-700 rounded-[30px] translate-y-6" />
+
+          {/* Background Glow */}
+          <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-r from-teal-300 to-emerald-600 rounded-3xl translate-y-4" />
         </div>
       </div>
     </section>
