@@ -1,5 +1,5 @@
 // src/components/Chatbot.tsx
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,16 +17,37 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hi! I'm your Education Beast assistant 🤖. Ask me anything about admissions, classes, timings, fees, facilities, or policies.",
+      text:
+        "Hi! I'm your Education Beast assistant 🤖. Ask me anything about admissions, classes, timings, fees, facilities, or policies.",
       isBot: true,
       timestamp: new Date(),
     },
   ]);
   const [inputValue, setInputValue] = useState("");
 
-  /* ------------------------------------------------------------------ */
-  /* FAQ DATASET                                                        */
-  /* ------------------------------------------------------------------ */
+  // ---- AUTOSCROLL REFS & HELPER ----
+  const listRef = useRef<HTMLDivElement | null>(null);
+  const endRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToBottom = () => {
+    // double RAF to ensure DOM paint is done before scrolling
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (listRef.current) {
+          listRef.current.scrollTop = listRef.current.scrollHeight;
+        } else {
+          endRef.current?.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  };
+
+  // scroll when messages change or when panel opens
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isOpen]);
+
+  /* --------------------- FAQ DATASET --------------------- */
   const faqResponses: Record<string, string> = {
     // Category 1
     vision:
@@ -104,13 +125,10 @@ const Chatbot = () => {
       "I’d be happy to help! Please call us at [Insert Phone Number] or email [Insert Email Address] — our team will respond soon.",
   };
 
-  /* ------------------------------------------------------------------ */
-  /* MATCHER                                                            */
-  /* ------------------------------------------------------------------ */
+  /* ------------------------- MATCHER ------------------------- */
   const getBotResponse = (userMsg: string): string => {
     const msg = userMsg.toLowerCase();
 
-    // keyword buckets
     if (msg.includes("vision") || msg.includes("mission")) return faqResponses.vision;
     if (msg.includes("value")) return faqResponses.values;
     if (msg.includes("address") || msg.includes("where") || msg.includes("location"))
@@ -159,13 +177,10 @@ const Chatbot = () => {
     if (msg.includes("other") || msg.includes("different") || msg.includes("human"))
       return faqResponses.other;
 
-    // fallback
     return "I can help with questions about admissions, classes, fees, facilities, and policies. What would you like to ask?";
   };
 
-  /* ------------------------------------------------------------------ */
-  /* MESSAGE HANDLERS                                                   */
-  /* ------------------------------------------------------------------ */
+  /* ----------------------- HANDLERS ----------------------- */
   const handleSend = () => {
     if (!inputValue.trim()) return;
 
@@ -183,17 +198,18 @@ const Chatbot = () => {
       timestamp: new Date(),
     };
 
-    setMessages((prev) => [...prev, userMessage, botResponse]);
+    setMessages(prev => [...prev, userMessage, botResponse]);
     setInputValue("");
+
+    // just in case: immediate scroll after enqueue
+    setTimeout(scrollToBottom, 0);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") handleSend();
   };
 
-  /* ------------------------------------------------------------------ */
-  /* RENDER                                                             */
-  /* ------------------------------------------------------------------ */
+  /* ------------------------- RENDER ------------------------- */
   return (
     <>
       {/* Floating toggle */}
@@ -221,8 +237,11 @@ const Chatbot = () => {
 
             <CardContent className="space-y-4">
               {/* Messages */}
-              <div className="h-64 overflow-y-auto space-y-3 pr-2">
-                {messages.map((m) => (
+              <div
+                ref={listRef}
+                className="h-64 overflow-y-auto space-y-3 pr-2 pb-10 scroll-smooth"
+              >
+                {messages.map(m => (
                   <div key={m.id} className={`flex ${m.isBot ? "justify-start" : "justify-end"}`}>
                     <div
                       className={`max-w-[85%] p-3 rounded-lg text-sm ${
@@ -235,13 +254,14 @@ const Chatbot = () => {
                     </div>
                   </div>
                 ))}
+                <div ref={endRef} />
               </div>
 
               {/* Input */}
               <div className="flex space-x-2">
                 <Input
                   value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
+                  onChange={e => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me anything..."
                   className="flex-1 border-gray-200 focus:border-teal-500"
@@ -253,7 +273,7 @@ const Chatbot = () => {
 
               {/* Quick buttons */}
               <div className="flex flex-wrap gap-2">
-                {["Admissions", "Fees", "Facilities", "Safety", "Contact"].map((topic) => (
+                {["Admissions", "Fees", "Facilities", "Safety", "Contact"].map(topic => (
                   <Button
                     key={topic}
                     variant="outline"
