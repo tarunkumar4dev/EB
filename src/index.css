@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Education Beast Design System - Teal Family Gradients */
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 195 100% 15%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 195 100% 15%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 195 100% 15%;
+
+    /* Primary teal system - #0EA89D and variations */
+    --primary: 175 85% 35%;
+    --primary-light: 175 85% 45%;
+    --primary-dark: 175 85% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary system - lighter teal */
+    --secondary: 175 60% 92%;
+    --secondary-foreground: 175 85% 25%;
+
+    /* Muted system */
+    --muted: 175 30% 96%;
+    --muted-foreground: 195 25% 45%;
+
+    /* Accent system - aqua tints */
+    --accent: 175 75% 88%;
+    --accent-foreground: 175 85% 25%;
+
+    /* Destructive system */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border and input */
+    --border: 175 25% 88%;
+    --input: 175 25% 92%;
+    --ring: 175 85% 35%;
+
+    /* Custom Education Beast tokens */
+    --teal-50: 175 60% 97%;
+    --teal-100: 175 60% 92%;
+    --teal-200: 175 65% 82%;
+    --teal-300: 175 70% 72%;
+    --teal-400: 175 75% 62%;
+    --teal-500: 175 85% 45%;
+    --teal-600: 175 85% 35%;
+    --teal-700: 175 85% 25%;
+    --teal-800: 175 85% 18%;
+    --teal-900: 175 85% 12%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--teal-400)), hsl(var(--teal-600)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--teal-300)) 0%, hsl(var(--teal-600)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--teal-50)), hsl(var(--teal-100)));
+    --gradient-button: linear-gradient(135deg, hsl(var(--teal-500)), hsl(var(--teal-700)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(var(--teal-600) / 0.1);
+    --shadow-card: 0 8px 30px -6px hsl(var(--teal-600) / 0.15);
+    --shadow-button: 0 4px 15px -3px hsl(var(--teal-600) / 0.25);
+
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 195 100% 5%;
+    --foreground: 175 60% 92%;
+
+    --card: 195 100% 8%;
+    --card-foreground: 175 60% 92%;
+
+    --popover: 195 100% 8%;
+    --popover-foreground: 175 60% 92%;
+
+    --primary: 175 75% 62%;
+    --primary-foreground: 195 100% 8%;
+
+    --secondary: 195 85% 15%;
+    --secondary-foreground: 175 60% 92%;
+
+    --muted: 195 85% 12%;
+    --muted-foreground: 175 30% 65%;
+
+    --accent: 195 85% 18%;
+    --accent-foreground: 175 60% 92%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 195 85% 15%;
+    --input: 195 85% 18%;
+    --ring: 175 75% 62%;
+
+    /* Dark mode teal tokens */
+    --teal-50: 195 85% 8%;
+    --teal-100: 195 85% 12%;
+    --teal-200: 195 80% 18%;
+    --teal-300: 195 75% 25%;
+    --teal-400: 175 70% 35%;
+    --teal-500: 175 75% 45%;
+    --teal-600: 175 75% 55%;
+    --teal-700: 175 75% 65%;
+    --teal-800: 175 70% 75%;
+    --teal-900: 175 60% 85%;
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--teal-600)), hsl(var(--teal-400)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--teal-700)) 0%, hsl(var(--teal-400)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--teal-100)), hsl(var(--teal-200)));
+    --gradient-button: linear-gradient(135deg, hsl(var(--teal-600)), hsl(var(--teal-400)));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .gradient-button {
+    background: var(--gradient-button);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-button {
+    box-shadow: var(--shadow-button);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+}
