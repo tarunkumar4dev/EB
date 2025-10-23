@@ -43,16 +43,18 @@ const Contact = () => {
       return;
     }
 
-    // WhatsApp integration
+    // WhatsApp integration - PROPERLY FORMATTED MESSAGE
     const whatsappMessage = `Hi! I'm interested in admission at Education Beast.
-    
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Class: ${formData.class}
-Message: ${formData.message}`;
 
-    const whatsappUrl = `https://wa.me/919800000000?text=${encodeURIComponent(whatsappMessage)}`;
+*Name:* ${formData.name}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email || "Not provided"}
+*Class:* ${formData.class}
+*Message:* ${formData.message || "No additional message"}
+
+I would like to know more about the admission process.`;
+
+    const whatsappUrl = `https://wa.me/919540690658?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, "_blank");
 
     toast({
@@ -236,14 +238,14 @@ Message: ${formData.message}`;
                         className="w-full px-3 py-2 bg-background border border-border rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                       >
                         <option value="">Select Class/Course</option>
-                        <option value="class-9">Class 9 (Maths & Science)</option>
-                        <option value="class-10">Class 10 (Maths & Science)</option>
-                        <option value="class-11-commerce">Class 11 Commerce</option>
-                        <option value="class-12-commerce">Class 12 Commerce</option>
-                        <option value="class-11-science">Class 11 Science</option>
-                        <option value="class-12-science">Class 12 Science</option>
-                        <option value="class-11-arts">Class 11 Arts</option>
-                        <option value="class-12-arts">Class 12 Arts</option>
+                        <option value="Class 9 (Maths & Science)">Class 9 (Maths & Science)</option>
+                        <option value="Class 10 (Maths & Science)">Class 10 (Maths & Science)</option>
+                        <option value="Class 11 Commerce">Class 11 Commerce</option>
+                        <option value="Class 12 Commerce">Class 12 Commerce</option>
+                        <option value="Class 11 Science">Class 11 Science</option>
+                        <option value="Class 12 Science">Class 12 Science</option>
+                        <option value="Class 11 Arts">Class 11 Arts</option>
+                        <option value="Class 12 Arts">Class 12 Arts</option>
                       </select>
                     </div>
                   </div>
