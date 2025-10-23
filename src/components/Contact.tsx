@@ -106,7 +106,7 @@ Message: ${formData.message}`;
                   <div>
                     <p className="font-medium text-primary">Location</p>
                     <p className="text-sm text-muted-foreground">
-                      Near Palam Metro Station<br />Palam, New Delhi
+                    Old Mehrauli Rd, Near Raj Dairy <br /> Raj nagar Part-2<br />Palam, New Delhi
                     </p>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ Message: ${formData.message}`;
                   <Phone className="w-5 h-5 text-teal-600" />
                   <div>
                     <p className="font-medium text-primary">Phone</p>
-                    <p className="text-sm text-muted-foreground">+91-98XXXXXXX</p>
+                    <p className="text-sm text-muted-foreground">+91-9540690658</p>
                   </div>
                 </div>
 
@@ -123,7 +123,7 @@ Message: ${formData.message}`;
                   <MessageCircle className="w-5 h-5 text-teal-600" />
                   <div>
                     <p className="font-medium text-primary">WhatsApp</p>
-                    <p className="text-sm text-muted-foreground">+91-98XXXXXXX</p>
+                    <p className="text-sm text-muted-foreground">+91-9540690658</p>
                   </div>
                 </div>
 
@@ -131,7 +131,7 @@ Message: ${formData.message}`;
                   <Mail className="w-5 h-5 text-teal-600" />
                   <div>
                     <p className="font-medium text-primary">Email</p>
-                    <p className="text-sm text-muted-foreground">hello@educationbeast.in</p>
+                    <p className="text-sm text-muted-foreground">educationbeast.0658@gmail.com</p>
                   </div>
                 </div>
 
@@ -140,9 +140,8 @@ Message: ${formData.message}`;
                   <div>
                     <p className="font-medium text-primary">Timings</p>
                     <p className="text-sm text-muted-foreground">
-                      Mon-Fri: 5-8 PM<br />
-                      Sat-Sun: 10 AM-2 PM<br />
-                      Doubt Clinic: 8-9 PM Daily
+                      Mon-Sat: 8AM - 9 PM<br />
+                      Sun : Weekly Tests
                     </p>
                   </div>
                 </div>

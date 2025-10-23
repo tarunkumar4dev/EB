@@ -16,16 +16,16 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-teal-50/40 to-white">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#00bda5]/10 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 lg:pt-20 lg:pb-28 grid lg:grid-cols-2 gap-12 items-center">
         {/* ---------- LEFT CONTENT ---------- */}
         <div className="text-center lg:text-left space-y-8">
           {/* Badges */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-            <Badge className="bg-gradient-to-r from-teal-100 to-emerald-100 text-teal-700 border border-teal-200 px-5 py-2 rounded-full text-sm sm:text-base font-semibold shadow-sm">
+            <Badge className="bg-gradient-to-r from-[#00bda5]/20 to-[#007667]/20 text-[#007667] border border-[#00bda5]/30 px-5 py-2 rounded-full text-sm sm:text-base font-semibold shadow-sm">
               🎓 Admissions Open
             </Badge>
-            <Badge className="bg-gradient-to-r from-teal-100 to-emerald-100 text-teal-700 border border-teal-200 px-5 py-2 rounded-full text-sm sm:text-base font-semibold shadow-sm">
+            <Badge className="bg-gradient-to-r from-[#00bda5]/20 to-[#007667]/20 text-[#007667] border border-[#00bda5]/30 px-5 py-2 rounded-full text-sm sm:text-base font-semibold shadow-sm">
               ✨ Free Demo Classes
             </Badge>
           </div>
@@ -33,7 +33,7 @@ const Hero = () => {
           {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
             Best Coaching in{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-emerald-700">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00bda5] to-[#007667]">
               Palam
             </span>
           </h1>
@@ -49,7 +49,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 sm:gap-6 pt-2">
             <Link
               to="/courses"
-              className="bg-gradient-to-r from-teal-500 to-emerald-600 hover:opacity-95 text-white font-semibold px-8 py-3 rounded-xl text-lg shadow-md flex items-center justify-center transition-transform hover:scale-[1.02]"
+              className="bg-gradient-to-r from-[#00bda5] to-[#007667] hover:opacity-95 text-white font-semibold px-8 py-3 rounded-xl text-lg shadow-md flex items-center justify-center transition-transform hover:scale-[1.02]"
             >
               <BookOpen className="w-6 h-6 mr-2" />
               Explore Courses
@@ -57,7 +57,7 @@ const Hero = () => {
             <Link
               to="/contact#contact"
               onClick={onDemoClick}
-              className="border-2 border-teal-600 text-teal-700 hover:bg-teal-600 hover:text-white font-semibold px-8 py-3 rounded-xl text-lg shadow-sm flex items-center justify-center transition-colors"
+              className="border-2 border-[#00bda5] text-[#007667] hover:bg-[#00bda5] hover:text-white font-semibold px-8 py-3 rounded-xl text-lg shadow-sm flex items-center justify-center transition-colors"
             >
               Book a Free Demo
             </Link>
@@ -72,8 +72,8 @@ const Hero = () => {
               { icon: Clock, label: "Years Experience", value: "5" },
             ].map((stat, i) => (
               <div key={i} className="text-center space-y-2">
-                <div className="w-14 h-14 mx-auto flex items-center justify-center bg-teal-100 rounded-full shadow-sm">
-                  <stat.icon className="w-7 h-7 text-teal-600" />
+                <div className="w-14 h-14 mx-auto flex items-center justify-center bg-[#00bda5]/20 rounded-full shadow-sm">
+                  <stat.icon className="w-7 h-7 text-[#007667]" />
                 </div>
                 <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
                 <div className="text-sm text-gray-600">{stat.label}</div>
@@ -94,7 +94,7 @@ const Hero = () => {
           </div>
 
           {/* Background Glow */}
-          <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-r from-teal-300 to-emerald-600 rounded-3xl translate-y-4" />
+          <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-r from-[#00bda5] to-[#007667] rounded-3xl translate-y-4" />
         </div>
       </div>
     </section>
